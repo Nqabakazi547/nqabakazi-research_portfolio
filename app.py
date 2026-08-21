@@ -259,8 +259,8 @@ elif page == "About Me":
     ✅ Postgraduate Diploma in Mathematical Sciences
 
     ✅ Continuous Professional Development
-    """) 
-# =================================================
+    """)
+    # =================================================
 # FARM RESOURCE ALLOCATION
 # =================================================
 
@@ -696,7 +696,7 @@ elif page == "Graduate Destination Survey":
         improve institutional decision making.
         """
     )
-    # =================================================
+# =================================================
 # INSTITUTIONAL REPORTING
 # =================================================
 
@@ -1062,4 +1062,3 @@ st.divider()
 st.caption(
     "© Nqabakazi Dyantyi | Research Portfolio"
 )
-``
