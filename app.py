@@ -166,13 +166,13 @@ if page == "Home":
 
         if os.path.exists("profile.jpeg"):
             st.image(
-                "profile.jpg",
+                "profile.jpeg",
                 use_container_width=True
             )
         else:
             st.info(
                 "Upload your graduation photograph to the repository "
-                "and name it **profile.jpg**."
+                "and name it **profile.jpeg**."
             )
 
     with col2:
