@@ -907,12 +907,15 @@ elif page == "📊 Graduate Destination Survey":
 
     if os.path.exists("gds_institutional_output.JPG"):
 
-        st.image(
-            "gds_institutional_output.JPG",
-            caption="Graduate Destination Survey — Institutional Output",
-            use_container_width=True
-        )
+    st.image(
+        "gds_institutional_output.JPG",
+        caption="Figure: Graduate Destination Survey — Institutional Output",
+        use_container_width=True
+    )
 
+    st.caption(
+        "Source: CPUT Office of the Vice-Chancellor (OVC) Report 2025, p. 43."
+    )
     else:
 
         st.warning(
