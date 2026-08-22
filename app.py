@@ -476,6 +476,12 @@ elif page == "🌱 Farm Resource Allocation":
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
         )
 
+    else:
+
+        st.warning(
+            "The Farm Resource Allocation presentation could not be found."
+        )
+
     st.divider()
 
     st.caption(
@@ -568,6 +574,12 @@ elif page == "🍷 WineScan Research":
             data=winescan_presentation,
             file_name="winescan_research.pptx",
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        )
+
+    else:
+
+        st.warning(
+            "The WineScan research presentation could not be found."
         )
 
 
@@ -891,6 +903,12 @@ elif page == "📊 Graduate Destination Survey":
             mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
         )
 
+    else:
+
+        st.warning(
+            "The Graduate Destination Survey presentation could not be found."
+        )
+
     # --------------------------------------------------------
     # INSTITUTIONAL OUTPUT
     # --------------------------------------------------------
@@ -907,15 +925,16 @@ elif page == "📊 Graduate Destination Survey":
 
     if os.path.exists("gds_institutional_output.JPG"):
 
-    st.image(
-        "gds_institutional_output.JPG",
-        caption="Figure: Graduate Destination Survey — Institutional Output",
-        use_container_width=True
-    )
+        st.image(
+            "gds_institutional_output.JPG",
+            caption="Figure: Graduate Destination Survey — Institutional Output",
+            use_container_width=True
+        )
 
-    st.caption(
-        "Source: CPUT Office of the Vice-Chancellor (OVC) Report 2025, p. 43."
-    )
+        st.caption(
+            "Source: CPUT Office of the Vice-Chancellor (OVC) Report 2025, p. 43."
+        )
+
     else:
 
         st.warning(
