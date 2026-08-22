@@ -450,23 +450,31 @@ elif page == "🌱 Farm Resource Allocation":
         """
     )
 
-    st.info(
-        """
-        The detailed model results, resource allocation tables,
-        financial comparison and crop allocation visualisations
-        will be added to this project page once the supporting
-        project material is uploaded.
-        """
-    )
+    # --------------------------------------------------------
+    # PROJECT EVIDENCE
+    # --------------------------------------------------------
 
-    st.header("Evidence")
+    st.header("Project Evidence")
 
     st.write(
         """
-        The original presentation and research report will be
-        incorporated here as selected evidence of the project.
+        The original project presentation provides supporting
+        evidence of the research process, mathematical formulation,
+        optimisation results and conclusions.
         """
     )
+
+    if os.path.exists("farm_resource_allocation.pptx"):
+
+        with open("farm_resource_allocation.pptx", "rb") as file:
+            farm_presentation = file.read()
+
+        st.download_button(
+            label="📥 View / Download Farm Resource Allocation Presentation",
+            data=farm_presentation,
+            file_name="farm_resource_allocation.pptx",
+            mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        )
 
     st.divider()
 
@@ -536,22 +544,31 @@ elif page == "🍷 WineScan Research":
         """
     )
 
-    st.info(
-        """
-        The full WineScan project presentation, report and
-        selected research figures will be added here once
-        the supporting material is uploaded.
-        """
-    )
+    # --------------------------------------------------------
+    # PROJECT EVIDENCE
+    # --------------------------------------------------------
 
-    st.header("Evidence")
+    st.header("Project Evidence")
 
     st.write(
         """
-        Selected pages from the original research project will
-        be presented here to show the research process and findings.
+        The original research presentation is provided as
+        supporting evidence of the WineScan research process
+        and statistical analysis.
         """
     )
+
+    if os.path.exists("winescan_research.pptx"):
+
+        with open("winescan_research.pptx", "rb") as file:
+            winescan_presentation = file.read()
+
+        st.download_button(
+            label="📥 View / Download WineScan Research Presentation",
+            data=winescan_presentation,
+            file_name="winescan_research.pptx",
+            mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        )
 
 
 # ============================================================
@@ -841,26 +858,66 @@ elif page == "📊 Graduate Destination Survey":
 
     st.info(
         """
-        This section will be expanded when the institutional
-        report evidence is added. The portfolio will show how
-        this academic project connects to graduate outcomes
-        reporting within the institutional environment.
+        This project demonstrates how an academic research
+        project can contribute to institutional reporting,
+        graduate outcomes analysis and evidence-informed
+        decision-making.
         """
     )
 
     # --------------------------------------------------------
-    # EVIDENCE
+    # PROJECT EVIDENCE
     # --------------------------------------------------------
 
     st.header("Project Evidence")
 
     st.write(
         """
-        Selected pages from the original academic presentation
-        will be displayed here rather than uploading the entire
-        presentation.
+        The original Graduate Destination Survey presentation
+        is provided as supporting evidence of the academic
+        research project.
         """
     )
+
+    if os.path.exists("graduate_destination_survey.pptx"):
+
+        with open("graduate_destination_survey.pptx", "rb") as file:
+            gds_presentation = file.read()
+
+        st.download_button(
+            label="📥 View / Download Graduate Destination Survey Presentation",
+            data=gds_presentation,
+            file_name="graduate_destination_survey.pptx",
+            mime="application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        )
+
+    # --------------------------------------------------------
+    # INSTITUTIONAL OUTPUT
+    # --------------------------------------------------------
+
+    st.subheader("Institutional Output")
+
+    st.write(
+        """
+        The Graduate Destination Survey work also extended
+        beyond the academic research project into an
+        institutional reporting context.
+        """
+    )
+
+    if os.path.exists("gds_institutional_output.JPG"):
+
+        st.image(
+            "gds_institutional_output.JPG",
+            caption="Graduate Destination Survey — Institutional Output",
+            use_container_width=True
+        )
+
+    else:
+
+        st.warning(
+            "The institutional output image could not be found."
+        )
 
 
 # ============================================================
@@ -902,22 +959,63 @@ elif page == "🔬 Science Communication":
         """
     )
 
-    st.info(
-        """
-        The project report and photographs from the science
-        communication activities will be added here once the
-        supporting material is uploaded.
-        """
-    )
+    # --------------------------------------------------------
+    # PROJECT EVIDENCE
+    # --------------------------------------------------------
 
     st.header("Project Evidence")
 
     st.write(
         """
-        Selected photographs and evidence from the project
-        will be presented here.
+        The project report provides documentation of the science
+        communication project, while the photographs provide
+        evidence of project delivery and public engagement.
         """
     )
+
+    # --------------------------------------------------------
+    # REPORT
+    # --------------------------------------------------------
+
+    st.subheader("Project Report")
+
+    if os.path.exists("maths_is_not_the_enemy.docx"):
+
+        with open("maths_is_not_the_enemy.docx", "rb") as file:
+            maths_report = file.read()
+
+        st.download_button(
+            label="📄 View / Download Maths Is NOT The Enemy Report",
+            data=maths_report,
+            file_name="maths_is_not_the_enemy.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        )
+
+    else:
+
+        st.warning(
+            "The Maths Is NOT The Enemy report could not be found."
+        )
+
+    # --------------------------------------------------------
+    # PROJECT DELIVERY
+    # --------------------------------------------------------
+
+    st.subheader("Project Delivery")
+
+    if os.path.exists("maths_is_not_the_enemy_delivery.jpeg"):
+
+        st.image(
+            "maths_is_not_the_enemy_delivery.jpeg",
+            caption="Maths Is NOT The Enemy! — Project Delivery",
+            use_container_width=True
+        )
+
+    else:
+
+        st.warning(
+            "The project delivery image could not be found."
+        )
 
 
 # ============================================================
