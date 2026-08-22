@@ -164,7 +164,7 @@ if page == "Home":
 
     with col1:
 
-        if os.path.exists("profile.jpg"):
+        if os.path.exists("profile.jpeg"):
             st.image(
                 "profile.jpg",
                 use_container_width=True
