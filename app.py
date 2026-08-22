@@ -1,8 +1,9 @@
 import streamlit as st
+import os
 
-# =========================================================
+# ============================================================
 # PAGE CONFIGURATION
-# =========================================================
+# ============================================================
 
 st.set_page_config(
     page_title="Nqabakazi Dyantyi | Research Portfolio",
@@ -11,55 +12,102 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# =========================================================
-# CUSTOM STYLING
-# =========================================================
+# ============================================================
+# CUSTOM CSS
+# ============================================================
 
 st.markdown(
     """
     <style>
 
-    .main {
-        background-color: #FFFFFF;
+    /* Main background */
+    .stApp {
+        background-color: #F7FBFF;
     }
 
+    /* Sidebar */
     [data-testid="stSidebar"] {
         background-color: #EAF4FF;
     }
 
+    /* Main headings */
     h1 {
         color: #0E4D92;
+        font-weight: 700;
     }
 
     h2 {
         color: #0E4D92;
+        font-weight: 650;
     }
 
     h3 {
         color: #1E3A5F;
     }
 
-    .profile-card {
-        background-color: #F7FBFF;
-        padding: 30px;
-        border-radius: 15px;
-        border-left: 5px solid #0E4D92;
-        margin-bottom: 20px;
+    /* Horizontal line */
+    hr {
+        border: none;
+        border-top: 1px solid #D7E8F7;
     }
 
+    /* Project cards */
     .project-card {
-        background-color: #F7FBFF;
-        padding: 20px;
+        background-color: white;
+        padding: 25px;
         border-radius: 15px;
-        border-left: 5px solid #6BB6FF;
-        margin-bottom: 15px;
+        border: 1px solid #DCEAF7;
+        margin-bottom: 20px;
+        box-shadow: 0px 3px 12px rgba(14, 77, 146, 0.06);
     }
 
-    .skill-card {
-        background-color: #F7FBFF;
-        padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 15px;
+    .project-number {
+        color: #6BAED6;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .project-title {
+        color: #0E4D92;
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+    .project-description {
+        color: #444444;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    /* Small tag */
+    .tag {
+        display: inline-block;
+        background-color: #EAF4FF;
+        color: #0E4D92;
+        padding: 6px 12px;
+        border-radius: 20px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: 13px;
+    }
+
+    /* Hero section */
+    .hero {
+        background-color: white;
+        padding: 35px;
+        border-radius: 18px;
+        border: 1px solid #DCEAF7;
+        box-shadow: 0px 4px 15px rgba(14, 77, 146, 0.06);
+    }
+
+    /* Footer */
+    .footer {
+        text-align: center;
+        color: #6B7280;
+        padding: 30px;
+        font-size: 13px;
     }
 
     </style>
@@ -67,393 +115,325 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# =========================================================
+# ============================================================
 # SIDEBAR NAVIGATION
-# =========================================================
+# ============================================================
 
-st.sidebar.title("Nqabakazi Dyantyi")
+st.sidebar.title("Research Portfolio")
+
+st.sidebar.markdown(
+    """
+    **Nqabakazi Dyantyi**
+
+    Institutional Research | Data Analytics
+    """
+)
+
+st.sidebar.divider()
 
 page = st.sidebar.radio(
-    "Navigate",
+    "Explore",
     [
         "Home",
-        "About Me",
-        "Projects",
-        "Professional Experience",
-        "Skills",
-        "Contact"
+        "🌱 Farm Resource Allocation",
+        "🍷 WineScan Research",
+        "📊 Graduate Destination Survey",
+        "🔬 Science Communication"
     ]
 )
 
 st.sidebar.divider()
 
 st.sidebar.caption(
-    "Institutional Research | Data Analytics | Research Communication"
+    "Selected academic and applied research projects"
 )
 
-# =========================================================
-# HOME
-# =========================================================
+# ============================================================
+# HOME PAGE
+# ============================================================
 
 if page == "Home":
 
-    col1, col2 = st.columns([1, 2])
+    # --------------------------------------------------------
+    # HERO
+    # --------------------------------------------------------
+
+    st.markdown('<div class="hero">', unsafe_allow_html=True)
+
+    col1, col2 = st.columns([1, 2.2])
 
     with col1:
 
-        st.image(
-            "profile.jpg",
-            width=280
-        )
-
-    with col2:
-
-        st.title("NQABAKAZI DYANTYI")
-
-        st.subheader(
-            "Institutional Research | Data Analytics | Science Communication"
-        )
-
-        st.write(
-            """
-            Welcome to my professional research portfolio.
-
-            I am a Junior Data Analyst and emerging Institutional
-            Research professional with interests in data analytics,
-            quantitative research, survey methodology, optimisation
-            modelling, dashboard development and research communication.
-            """
-        )
-
-        st.write(
-            """
-            This portfolio presents selected academic and professional
-            projects that demonstrate how I use data, statistical
-            methods and analytical thinking to investigate real-world
-            problems and communicate evidence for decision-making.
-            """
-        )
-
-    st.divider()
-
-    st.header("Research Profile")
-
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.info(
-            """
-            🌱
-
-            **Operations Research**
-
-            Linear Programming  
-            Optimisation  
-            Mathematical Modelling
-            """
-        )
-
-    with col2:
-        st.info(
-            """
-            📊
-
-            **Institutional Research**
-
-            Survey Research  
-            Graduate Outcomes  
-            Institutional Analytics
-            """
-        )
-
-    with col3:
-        st.info(
-            """
-            🔬
-
-            **Research Communication**
-
-            Science Communication  
-            Public Engagement  
-            Research Translation
-            """
-        )
-
-    st.divider()
-
-    st.header("Selected Projects")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        st.markdown(
-            """
-            <div class="project-card">
-
-            <h3>🌱 Farm Resource Allocation</h3>
-
-            Undergraduate Operations Research project applying
-            Linear Programming to agricultural resource allocation.
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-        st.markdown(
-            """
-            <div class="project-card">
-
-            <h3>🍷 WineScan Research</h3>
-
-            Scientific research project investigating WineScan
-            FTIR spectroscopy and statistical analysis.
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        if os.path.exists("profile.jpg"):
+            st.image(
+                "profile.jpg",
+                use_container_width=True
+            )
+        else:
+            st.info(
+                "Upload your graduation photograph to the repository "
+                "and name it **profile.jpg**."
+            )
 
     with col2:
 
         st.markdown(
-            """
-            <div class="project-card">
-
-            <h3>📊 Graduate Destination Survey</h3>
-
-            Research project involving survey redesign,
-            data quality and Power BI dashboard development.
-
-            </div>
-            """,
-            unsafe_allow_html=True
+            "# NQABAKAZI DYANTYI"
         )
 
         st.markdown(
-            """
-            <div class="project-card">
-
-            <h3>🔬 Science Communication</h3>
-
-            AIMS science communication and public engagement
-            project focused on communicating mathematics research
-            to community audiences.
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-# =========================================================
-# ABOUT ME
-# =========================================================
-
-elif page == "About Me":
-
-    st.title("👩🏽‍💻 About Me")
-
-    col1, col2 = st.columns([1, 2])
-
-    with col1:
-
-        st.image(
-            "profile.jpg",
-            width=250
-        )
-
-    with col2:
-
-        st.subheader("Nqabakazi Dyantyi")
-
-        st.write(
-            """
-            I am a Junior Data Analyst within the Institutional
-            Planning Directorate at the Cape Peninsula University
-            of Technology.
-            """
+            "### Institutional Research | Data Analytics | Applied Research"
         )
 
         st.write(
             """
-            My professional interests are centred on Institutional
-            Research, data analytics and evidence-based decision-making.
-            I am particularly interested in understanding how
-            institutional data can be transformed into meaningful
-            information that supports planning and decision-making.
+            Welcome to my research portfolio.
+
+            This portfolio presents selected academic and applied
+            projects that have shaped my development across
+            mathematical modelling, statistical analysis,
+            institutional research, data analytics and
+            science communication.
             """
         )
 
-    st.divider()
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    st.header("Areas of Interest")
+    st.write("")
 
-    interests = [
-        "Institutional Research",
-        "Graduate Outcomes Analytics",
-        "Survey Methodology",
-        "Data Visualisation",
-        "Applied Statistics",
-        "Operations Research",
-        "Optimisation Modelling",
-        "Science Communication"
-    ]
+    # --------------------------------------------------------
+    # ABOUT
+    # --------------------------------------------------------
 
-    for interest in interests:
-        st.write(f"• {interest}")
-
-    st.divider()
-
-    st.header("Education")
-
-    st.markdown(
-        """
-        **Advanced Diploma in Mathematical Sciences**
-
-        **Postgraduate Diploma in Mathematical Sciences**
-
-        **Continuous Professional Development**
-        """
-    )
-
-# =========================================================
-# PROJECTS
-# =========================================================
-
-elif page == "Projects":
-
-    st.title("📁 Research Projects")
+    st.header("About")
 
     st.write(
         """
-        Selected academic and research projects demonstrating
-        my experience in quantitative research, statistical
-        analysis, optimisation, institutional research and
-        science communication.
+        My work sits at the intersection of research, data and
+        decision-making. I am particularly interested in using
+        quantitative methods to understand problems, analyse
+        evidence and communicate findings in ways that can support
+        informed decisions.
         """
     )
 
     st.divider()
 
-    # -----------------------------------------------------
-    # PROJECT 1
-    # -----------------------------------------------------
+    # --------------------------------------------------------
+    # PROJECTS
+    # --------------------------------------------------------
 
-    st.header("🌱 01 | Farm Resource Allocation")
+    st.header("Research & Project Portfolio")
+
+    st.write(
+        "Selected projects from my academic and research journey."
+    )
+
+    # --------------------------------------------------------
+    # PROJECT 1
+    # --------------------------------------------------------
+
+    st.markdown(
+        """
+        <div class="project-card">
+
+        <div class="project-number">01 — OPERATIONS RESEARCH</div>
+
+        <div class="project-title">
+        🌱 Farm Resource Allocation
+        </div>
+
+        <p class="project-description">
+        <b>Farm Resource Allocation Problem: A Case Study of a Farm
+        in Queenstown, Eastern Cape, South Africa.</b>
+        </p>
+
+        <p class="project-description">
+        An undergraduate Operations Research project investigating
+        the application of Linear Programming to agricultural
+        resource allocation and decision-making under resource
+        constraints.
+        </p>
+
+        <span class="tag">Linear Programming</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">Optimisation</span>
+        <span class="tag">Mathematical Modelling</span>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # --------------------------------------------------------
+    # PROJECT 2
+    # --------------------------------------------------------
+
+    st.markdown(
+        """
+        <div class="project-card">
+
+        <div class="project-number">02 — SCIENTIFIC RESEARCH</div>
+
+        <div class="project-title">
+        🍷 WineScan Research
+        </div>
+
+        <p class="project-description">
+        A scientific research project investigating the use of
+        WineScan FTIR spectroscopy and statistical analysis in
+        the study of wine characteristics and pinking susceptibility.
+        </p>
+
+        <span class="tag">FTIR Spectroscopy</span>
+        <span class="tag">Statistical Analysis</span>
+        <span class="tag">ANOVA</span>
+        <span class="tag">Research</span>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # --------------------------------------------------------
+    # PROJECT 3
+    # --------------------------------------------------------
+
+    st.markdown(
+        """
+        <div class="project-card">
+
+        <div class="project-number">03 — INSTITUTIONAL RESEARCH</div>
+
+        <div class="project-title">
+        📊 Graduate Destination Survey
+        </div>
+
+        <p class="project-description">
+        An Advanced Diploma research project focused on improving
+        Graduate Destination Survey reporting through survey
+        redesign, data quality improvement and Power BI dashboard
+        development.
+        </p>
+
+        <span class="tag">Survey Research</span>
+        <span class="tag">Data Analytics</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Institutional Research</span>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # --------------------------------------------------------
+    # PROJECT 4
+    # --------------------------------------------------------
+
+    st.markdown(
+        """
+        <div class="project-card">
+
+        <div class="project-number">04 — SCIENCE COMMUNICATION</div>
+
+        <div class="project-title">
+        🔬 Maths Is NOT The Enemy!
+        </div>
+
+        <p class="project-description">
+        A science communication and public engagement project
+        focused on communicating research around mathematical
+        beliefs, confidence and learning to community audiences.
+        </p>
+
+        <span class="tag">Science Communication</span>
+        <span class="tag">Public Engagement</span>
+        <span class="tag">Research Translation</span>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.divider()
+
+    st.markdown(
+        """
+        <div class="footer">
+        © Nqabakazi Dyantyi | Research Portfolio
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+# ============================================================
+# FARM RESOURCE ALLOCATION
+# ============================================================
+
+elif page == "🌱 Farm Resource Allocation":
+
+    st.title("🌱 Farm Resource Allocation Problem")
 
     st.caption(
         "Undergraduate Research Project | Operations Research"
     )
 
     st.subheader(
-        "Farm Resource Allocation Problem: "
         "A Case Study of a Farm in Queenstown, "
         "Eastern Cape, South Africa"
     )
 
-    st.write(
-        """
-        This project investigated the application of Linear
-        Programming to improve agricultural resource allocation
-        under limited land, labour and financial resources.
-        """
-    )
+    st.divider()
 
-    st.markdown("### Research Problem")
+    st.header("Project Overview")
 
     st.write(
         """
-        Farm managers face the challenge of maximising profit
-        while managing constraints relating to income, available
-        land, labour and production costs.
-
-        A Linear Programming model was therefore introduced
-        to support more effective agricultural resource
-        management and decision-making.
+        Resource allocation is a significant challenge in
+        agriculture. Farmers must make decisions about how to
+        allocate limited resources while seeking to improve
+        economic outcomes.
         """
     )
 
-    st.markdown("### Research Objectives")
+    st.header("Research Problem")
+
+    st.write(
+        """
+        Farm managers face resource allocation challenges while
+        attempting to maximise profit under limitations involving
+        income, land and labour.
+
+        This project introduced a Linear Programming model,
+        implemented using the simplex method in MATLAB, to
+        investigate agricultural resource allocation.
+        """
+    )
+
+    st.header("Objectives")
 
     st.markdown(
         """
-        • Investigate the application of Linear Programming
-        to enhance resource allocation in agriculture.
-
-        • Identify key variables and constraints for a
-        farmer-focused Linear Programming model.
-
-        • Determine essential parameters and data sources
-        for effective MATLAB implementation.
-
-        • Develop methods for communicating Linear Programming
-        results to farm managers for informed decision-making.
+        - Investigate the application of Linear Programming
+          to enhance resource allocation in agriculture.
+        - Identify key variables and constraints for a
+          farmer-focused Linear Programming model.
+        - Determine essential parameters and data sources
+          for MATLAB implementation.
+        - Develop methods for communicating Linear Programming
+          results to farm managers for informed decision-making.
         """
     )
 
-    st.markdown("### Methodology")
+    st.header("Methodology")
 
     st.write(
         """
-        The study formulated an agricultural Linear Programming
-        problem and implemented the model using the simplex method
-        in MATLAB.
-        """
-    )
-
-    st.markdown("### Modelled Crops")
-
-    crop_col1, crop_col2, crop_col3 = st.columns(3)
-
-    with crop_col1:
-        st.info("🥬 Cabbage")
-        st.info("🌿 Spinach")
-
-    with crop_col2:
-        st.info("🎃 Butternut")
-        st.info("🍅 Tomatoes")
-
-    with crop_col3:
-        st.info("🥔 Potatoes")
-        st.info("🌽 Maize")
-
-    st.markdown("### Resources Considered")
-
-    st.markdown(
-        """
-        • Land
-
-        • Labour
-
-        • Fertilizer
-
-        • Chemicals
-
-        • Seed costs
-
-        • Income and expenses
-        """
-    )
-
-    st.markdown("### Mathematical Model")
-
-    st.latex(
-        r"""
-        \max Z =
-        160000x_1 +
-        56000x_2 +
-        80000x_3 +
-        166975.8813x_4 +
-        400000x_5 +
-        1200000x_6
-        """
-    )
-
-    st.write(
-        """
-        where the decision variables represent the area
-        allocated to each crop.
+        The project formulated an agricultural Linear Programming
+        problem in which crop areas were treated as decision
+        variables. The model incorporated constraints relating
+        to land, labour, fertilizer, chemical and seed resources.
         """
     )
 
@@ -461,81 +441,74 @@ elif page == "Projects":
         """
         **Decision variables**
 
-        • x₁ = cabbage
-
-        • x₂ = spinach
-
-        • x₃ = butternut
-
-        • x₄ = tomatoes
-
-        • x₅ = potatoes
-
-        • x₆ = maize
+        - x₁ — cabbage
+        - x₂ — spinach
+        - x₃ — butternut
+        - x₄ — tomatoes
+        - x₅ — potatoes
+        - x₆ — maize
         """
     )
 
     st.info(
         """
-        📌 **Results section**
-
-        Detailed optimisation results, resource allocation
-        tables and farmer-versus-LP comparisons will be added
-        to this portfolio once the final results have been
-        verified.
+        The detailed model results, resource allocation tables,
+        financial comparison and crop allocation visualisations
+        will be added to this project page once the supporting
+        project material is uploaded.
         """
     )
 
-    st.markdown("### Skills Demonstrated")
+    st.header("Evidence")
 
-    st.markdown(
+    st.write(
         """
-        ✅ Linear Programming  
-        ✅ Operations Research  
-        ✅ MATLAB  
-        ✅ Mathematical Modelling  
-        ✅ Optimisation  
-        ✅ Quantitative Analysis
+        The original presentation and research report will be
+        incorporated here as selected evidence of the project.
         """
     )
 
     st.divider()
 
-    # -----------------------------------------------------
-    # PROJECT 2
-    # -----------------------------------------------------
+    st.caption(
+        "Project: Farm Resource Allocation Problem"
+    )
 
-    st.header("🍷 02 | WineScan Research")
+
+# ============================================================
+# WINESCAN
+# ============================================================
+
+elif page == "🍷 WineScan Research":
+
+    st.title("🍷 WineScan Research")
 
     st.caption(
         "Scientific Research Project | Statistical Analysis"
     )
 
-    st.subheader(
-        "Investigating WineScan as a Tool for Identifying "
-        "Pinking in Wine"
-    )
+    st.divider()
+
+    st.header("Project Overview")
 
     st.write(
         """
-        This research investigated WineScan FTIR spectroscopy
-        as a potential analytical tool for identifying pinking
-        susceptibility in white wine.
+        This project investigated WineScan FTIR spectroscopy
+        as an analytical approach within wine research.
         """
     )
 
-    st.markdown("### Research Focus")
+    st.header("Research Focus")
 
     st.write(
         """
-        The study examined the influence of experimental
-        conditions and wine characteristics on measured
-        absorbance and investigated whether WineScan could
-        provide a rapid and non-destructive analytical approach.
+        The study examined factors associated with wine samples
+        and used statistical analysis to investigate differences
+        between experimental conditions.
         """
     )
 
-    st.markdown("### Statistical Analysis")
+    st.header("Statistical Analysis")
 
     col1, col2 = st.columns(2)
 
@@ -551,107 +524,156 @@ elif page == "Projects":
             "< 2 × 10⁻¹⁶"
         )
 
+    st.header("Methods & Tools")
+
+    st.markdown(
+        """
+        - FTIR / WineScan spectroscopy
+        - ANOVA
+        - Tukey HSD
+        - Statistical analysis
+        - Data interpretation
+        """
+    )
+
+    st.info(
+        """
+        The full WineScan project presentation, report and
+        selected research figures will be added here once
+        the supporting material is uploaded.
+        """
+    )
+
+    st.header("Evidence")
+
     st.write(
         """
-        ANOVA was used to investigate differences between
-        treatment groups, with Tukey HSD used for post-hoc
-        comparisons.
+        Selected pages from the original research project will
+        be presented here to show the research process and findings.
         """
     )
 
-    st.markdown("### Key Findings")
 
-    st.markdown(
-        """
-        • Ripening stage significantly influenced absorbance.
+# ============================================================
+# GRADUATE DESTINATION SURVEY
+# ============================================================
 
-        • The 25°B treatment showed the highest absorbance.
+elif page == "📊 Graduate Destination Survey":
 
-        • Press method showed minimal effect.
-
-        • Temperature showed limited impact.
-        """
-    )
-
-    st.success(
-        """
-        WineScan demonstrated potential as a rapid,
-        non-destructive analytical approach for assessing
-        pinking susceptibility in wine.
-        """
-    )
-
-    st.markdown("### Skills Demonstrated")
-
-    st.markdown(
-        """
-        ✅ ANOVA  
-        ✅ Tukey HSD  
-        ✅ FTIR Spectroscopy  
-        ✅ Experimental Analysis  
-        ✅ Statistical Interpretation
-        """
-    )
-
-    st.divider()
-
-    # -----------------------------------------------------
-    # PROJECT 3
-    # -----------------------------------------------------
-
-    st.header("📊 03 | Graduate Destination Survey")
+    st.title("📊 Graduate Destination Survey")
 
     st.caption(
         "Advanced Diploma Research Project | Institutional Research"
     )
 
     st.subheader(
-        "Improving Graduate Outcomes Reporting at CPUT"
+        "Improving Graduate Outcomes Reporting at "
+        "Cape Peninsula University of Technology"
     )
 
     st.write(
         """
-        This project focused on improving the Graduate Destination
-        Survey through survey redesign, data quality improvement
-        and dashboard development.
+        A case study in survey redesign and dashboard development.
         """
     )
 
-    st.markdown("### Research Problem")
+    st.divider()
+
+    # --------------------------------------------------------
+    # PROJECT OVERVIEW
+    # --------------------------------------------------------
+
+    st.header("Project Overview")
+
+    st.write(
+        """
+        This project focused on improving Graduate Destination
+        Survey reporting through survey redesign, data quality
+        improvement and dashboard development.
+        """
+    )
+
+    # --------------------------------------------------------
+    # RESEARCH PROBLEM
+    # --------------------------------------------------------
+
+    st.header("Research Problem")
 
     st.markdown(
         """
-        Existing survey challenges included:
+        The project identified several challenges in the existing
+        Graduate Destination Survey:
 
-        • Unclear questions
-
-        • Limited validation
-
-        • Inconsistent responses
-
-        • Data quality challenges
-
-        • Limited reporting capability
+        - Unclear questions
+        - No validation or logic
+        - Inconsistent responses
+        - Weak data quality
         """
     )
 
-    st.markdown("### Objectives")
+    # --------------------------------------------------------
+    # OBJECTIVES
+    # --------------------------------------------------------
+
+    st.header("Objectives")
 
     st.markdown(
         """
-        • Improve survey quality.
-
-        • Strengthen the data pipeline.
-
-        • Improve data quality.
-
-        • Enhance graduate outcomes reporting.
-
-        • Develop a dashboard solution.
+        - Strengthen the data pipeline through pilot testing.
+        - Improve survey quality.
+        - Enhance reporting capacity through dashboard development.
         """
     )
 
-    st.markdown("### Historical Dataset")
+    # --------------------------------------------------------
+    # METHODOLOGY
+    # --------------------------------------------------------
+
+    st.header("Methodology")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.subheader("Data Sources")
+        st.write(
+            """
+            Historical GDS dataset
+
+            Pilot survey using Microsoft Forms
+            """
+        )
+
+    with col2:
+        st.subheader("Tools")
+        st.write(
+            """
+            Excel
+
+            R
+
+            Power BI
+            """
+        )
+
+    with col3:
+        st.subheader("Workflow")
+        st.write(
+            """
+            Data cleaning
+
+            Pilot testing
+
+            Analysis
+
+            Dashboard development
+            """
+        )
+
+    # --------------------------------------------------------
+    # HISTORICAL DATA
+    # --------------------------------------------------------
+
+    st.header("Historical Dataset")
 
     col1, col2 = st.columns(2)
 
@@ -663,381 +685,252 @@ elif page == "Projects":
 
     with col2:
         st.metric(
-            "Valid Records",
+            "Valid Graduate Records",
             "1,736"
         )
 
     st.write(
         """
-        Historical records were cleaned and verified before
-        being prepared for analysis and survey redesign.
+        The historical dataset contained 2,491 records and
+        68 variables. After cleaning, 1,736 valid graduate
+        records remained, with 19 relevant variables retained.
+        Records were verified against HEMIS.
         """
     )
 
-    st.markdown("### Tools Used")
+    # --------------------------------------------------------
+    # PILOT DATA
+    # --------------------------------------------------------
+
+    st.header("Pilot Survey")
+
+    st.metric(
+        "Pilot Responses",
+        "19"
+    )
+
+    st.write(
+        """
+        The redesigned pilot survey was conducted using
+        Microsoft Forms and was used to test logic, clarity,
+        validation and survey flow.
+        """
+    )
+
+    # --------------------------------------------------------
+    # REDESIGNED GDS
+    # --------------------------------------------------------
+
+    st.header("Redesigned Graduate Destination Survey")
+
+    st.write(
+        """
+        The redesigned instrument introduced additional themes
+        to strengthen graduate outcomes reporting.
+        """
+    )
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("**Employment & Career**")
+        st.write(
+            """
+            • Time-to-employment
+
+            • Job relevance
+
+            • Reasons for unemployment
+            """
+        )
+
+    with col2:
+        st.markdown("**Further Development**")
+        st.write(
+            """
+            • Further study details
+
+            • Salary bands
+            """
+        )
+
+    with col3:
+        st.markdown("**Student Experience**")
+        st.write(
+            """
+            • WIL satisfaction
+
+            • CPUT satisfaction
+            """
+        )
+
+    # --------------------------------------------------------
+    # DASHBOARD
+    # --------------------------------------------------------
+
+    st.header("Power BI Dashboard")
+
+    st.write(
+        """
+        The project proposed a Power BI dashboard to provide
+        graduate outcomes insights and modernise reporting.
+        """
+    )
 
     st.markdown(
         """
-        • Excel
+        **Dashboard indicators included:**
 
-        • Microsoft Forms
-
-        • R
-
-        • Power BI
+        - Response Rate
+        - Employment Status
+        - Salary
+        - Sector
+        - Further Studies
+        - WIL & CPUT Satisfaction
+        - Qualification vs Employment
         """
     )
 
-    st.markdown("### Survey Redesign")
+    # --------------------------------------------------------
+    # LIMITATIONS
+    # --------------------------------------------------------
+
+    st.header("Limitations")
+
+    st.warning(
+        """
+        The pilot contained only 19 responses, limiting
+        generalisability. The sample was also too small for
+        inferential statistics or reliability testing.
+        Findings therefore remained preliminary pending
+        full-scale rollout.
+        """
+    )
+
+    # --------------------------------------------------------
+    # CONCLUSION
+    # --------------------------------------------------------
+
+    st.header("Conclusion & Recommendations")
+
+    st.write(
+        """
+        The project concluded that the redesigned GDS could
+        improve clarity while the dashboard could enable
+        more timely insights.
+        """
+    )
 
     st.markdown(
         """
-        New or improved areas included:
+        **Recommendations**
 
-        • Salary bands
-
-        • Job relevance
-
-        • Time to employment
-
-        • Reasons for unemployment
-
-        • Further studies
-
-        • Work-integrated learning satisfaction
+        - Full rollout of the redesigned GDS
+        - Annual GDS implementation
+        - Strengthen WIL partnerships
+        - Link GDS to HEMIS
+        - Continue updating the dashboard with relevant variables
         """
     )
 
-    st.markdown("### Skills Demonstrated")
+    # --------------------------------------------------------
+    # INSTITUTIONAL SIGNIFICANCE
+    # --------------------------------------------------------
 
-    st.markdown(
+    st.header("From Academic Research to Institutional Application")
+
+    st.info(
         """
-        ✅ Survey Design  
-        ✅ Data Cleaning  
-        ✅ Data Validation  
-        ✅ Power BI  
-        ✅ Institutional Research  
-        ✅ Dashboard Development
+        This section will be expanded when the institutional
+        report evidence is added. The portfolio will show how
+        this academic project connects to graduate outcomes
+        reporting within the institutional environment.
         """
     )
 
-    st.divider()
+    # --------------------------------------------------------
+    # EVIDENCE
+    # --------------------------------------------------------
 
-    # -----------------------------------------------------
-    # PROJECT 4
-    # -----------------------------------------------------
+    st.header("Project Evidence")
 
-    st.header("🔬 04 | Science Communication & Public Engagement")
+    st.write(
+        """
+        Selected pages from the original academic presentation
+        will be displayed here rather than uploading the entire
+        presentation.
+        """
+    )
+
+
+# ============================================================
+# SCIENCE COMMUNICATION
+# ============================================================
+
+elif page == "🔬 Science Communication":
+
+    st.title("🔬 Science Communication")
 
     st.caption(
-        "Africa Scientifique Programme | AIMS South Africa"
+        "AIMS / Africa Scientifique | Research Communication"
     )
 
     st.subheader(
         "Maths Is NOT The Enemy!"
     )
 
-    st.write(
-        """
-        This project explored how parents' beliefs about
-        mathematics can influence children's confidence
-        and attitudes towards mathematics.
-        """
-    )
+    st.divider()
 
-    st.markdown("### Project Focus")
+    st.header("Project Overview")
 
     st.write(
         """
-        The project translated research and mathematical
-        ideas into accessible messages for community audiences.
+        A science communication project focused on translating
+        ideas about mathematics, beliefs and confidence into
+        accessible conversations with community audiences.
         """
     )
 
-    st.markdown("### Objectives")
+    st.header("Focus")
 
     st.markdown(
         """
-        • Promote positive beliefs about mathematics.
-
-        • Engage parents and grandparents.
-
-        • Communicate scientific concepts using accessible language.
-
-        • Encourage positive support for learners.
+        - Science communication
+        - Public engagement
+        - Research translation
+        - Community outreach
         """
     )
-
-    st.markdown("### Target Audience")
-
-    st.markdown(
-        """
-        • Parents
-
-        • Grandparents
-
-        • Community members
-
-        • CPUT staff and campus community
-        """
-    )
-
-    st.markdown("### Skills Demonstrated")
-
-    st.markdown(
-        """
-        ✅ Science Communication  
-        ✅ Public Engagement  
-        ✅ Storytelling  
-        ✅ Public Speaking  
-        ✅ Community Outreach  
-        ✅ Research Translation
-        """
-    )
-
-# =========================================================
-# PROFESSIONAL EXPERIENCE
-# =========================================================
-
-elif page == "Professional Experience":
-
-    st.title("🏛️ Professional Experience")
-
-    st.subheader(
-        "Institutional Planning | Cape Peninsula University of Technology"
-    )
-
-    st.caption(
-        "Junior Data Analyst"
-    )
-
-    st.write(
-        """
-        My professional work involves supporting institutional
-        analytics, graduate outcomes reporting and evidence-based
-        decision-making within a higher education environment.
-        """
-    )
-
-    st.divider()
-
-    st.header("Institutional Research & Analytics")
-
-    st.markdown(
-        """
-        ✅ Graduate Outcomes Analysis
-
-        ✅ Data Cleaning
-
-        ✅ Graduate Record Verification
-
-        ✅ Data Quality Checks
-
-        ✅ Survey Analytics
-
-        ✅ Institutional Reporting
-
-        ✅ Data Visualisation
-
-        ✅ Executive Reporting Support
-
-        ✅ Dashboard Development
-        """
-    )
-
-    st.divider()
-
-    st.header("Graduate Outcomes Reporting")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-        st.metric(
-            "Response Rate",
-            "22.1%"
-        )
-
-    with col2:
-        st.metric(
-            "Employment Rate",
-            "41.7%"
-        )
-
-    st.write(
-        """
-        Graduate Destination Survey information is analysed
-        and transformed into reporting outputs that can support
-        institutional planning and management decision-making.
-        """
-    )
-
-    st.divider()
-
-    st.header("Research Interests")
-
-    st.markdown(
-        """
-        • Institutional Research
-
-        • Student Success
-
-        • Graduate Outcomes
-
-        • Survey Methodology
-
-        • Data Analytics
-
-        • Higher Education Planning
-
-        • Evidence-Based Decision-Making
-        """
-    )
-
-# =========================================================
-# SKILLS
-# =========================================================
-
-elif page == "Skills":
-
-    st.title("💡 Skills & Methods")
-
-    col1, col2 = st.columns(2)
-
-    with col1:
-
-        st.header("Data & Analytics")
-
-        st.markdown(
-            """
-            ✅ Excel
-
-            ✅ Power BI
-
-            ✅ Python
-
-            ✅ R
-
-            ✅ SQL
-
-            ✅ Data Cleaning
-
-            ✅ Data Visualisation
-
-            ✅ Dashboard Development
-            """
-        )
-
-        st.header("Institutional Research")
-
-        st.markdown(
-            """
-            ✅ Survey Design
-
-            ✅ Graduate Outcomes Analysis
-
-            ✅ Institutional Analytics
-
-            ✅ Data Quality
-
-            ✅ Executive Reporting
-
-            ✅ Evidence-Based Planning
-            """
-        )
-
-    with col2:
-
-        st.header("Statistical & Quantitative Methods")
-
-        st.markdown(
-            """
-            ✅ ANOVA
-
-            ✅ Tukey HSD
-
-            ✅ Statistical Analysis
-
-            ✅ Linear Programming
-
-            ✅ Optimisation
-
-            ✅ Mathematical Modelling
-            """
-        )
-
-        st.header("Research Communication")
-
-        st.markdown(
-            """
-            ✅ Research Translation
-
-            ✅ Science Communication
-
-            ✅ Public Speaking
-
-            ✅ Storytelling
-
-            ✅ Stakeholder Engagement
-
-            ✅ Community Outreach
-            """
-        )
-
-# =========================================================
-# CONTACT
-# =========================================================
-
-elif page == "Contact":
-
-    st.title("📧 Contact")
-
-    col1, col2 = st.columns([1, 2])
-
-    with col1:
-
-        st.image(
-            "profile.jpg",
-            width=250
-        )
-
-    with col2:
-
-        st.subheader("Nqabakazi Dyantyi")
-
-        st.write(
-            """
-            Junior Data Analyst
-
-            Institutional Planning Directorate
-
-            Cape Peninsula University of Technology
-            """
-        )
-
-        st.write(
-            """
-            **Research interests**
-
-            Institutional Research • Data Analytics •
-            Graduate Outcomes • Survey Research •
-            Operations Research • Science Communication
-            """
-        )
-
-    st.divider()
 
     st.info(
         """
-        Thank you for visiting my research portfolio.
+        The project report and photographs from the science
+        communication activities will be added here once the
+        supporting material is uploaded.
         """
     )
 
-# =========================================================
+    st.header("Project Evidence")
+
+    st.write(
+        """
+        Selected photographs and evidence from the project
+        will be presented here.
+        """
+    )
+
+
+# ============================================================
 # FOOTER
-# =========================================================
+# ============================================================
 
 st.divider()
 
-st.caption(
-    "© Nqabakazi Dyantyi | Research Portfolio"
+st.markdown(
+    """
+    <div class="footer">
+        Nqabakazi Dyantyi · Research Portfolio
+    </div>
+    """,
+    unsafe_allow_html=True
 )
